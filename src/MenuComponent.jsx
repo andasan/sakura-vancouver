@@ -24,7 +24,6 @@ class MenuComponent extends React.Component {
       // axios.get(`https://opendata.vancouver.ca/api/records/1.0/search/?dataset=street-trees&q=${treeName}&rows=200&facet=genus_name&facet=species_name&facet=common_name&facet=assigned&facet=root_barrier&facet=plant_area&facet=on_street&facet=neighbourhood_name&facet=street_side_name&facet=height_range_id&facet=curb&facet=date_planted&refine.plant_area=10&refine.common_name=AKEBONO+FLOWERING+CHERRY`)
         .then(res => {
           const treeArray = res.data;
-          // console.log("treeName", res.data[0]);
           this.setState({menuTitle: title})
           this.props.onTreeChange(treeArray);
         })

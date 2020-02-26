@@ -21,17 +21,13 @@ class App extends React.Component {
     this.state = {
       center: [-123.131, 49.251],
       zoom: [11.8],
-      streetTrees: [],
-      someVar: ''
+      streetTrees: []
     };
 
   }
 
   handleTreeChange = arr => {
-
-    console.log("DATA = ", arr);
     this.setState({ streetTrees: arr })
-    
   }
 
   render() {
@@ -58,13 +54,6 @@ class App extends React.Component {
             ))
             }
           </Layer>
-          <Popup
-            coordinates={[-0.13235092163085938, 51.518250335096376]}
-            offset={{
-              'bottom-left': [12, -38], 'bottom': [0, -38], 'bottom-right': [-12, -38]
-            }}>
-            <h1>Popup</h1>
-          </Popup>
         </Map>
       </>
     );
