@@ -80,3 +80,19 @@ header{
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 425px) {
+  header{
+    font-size: 2.5em;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header_dropdown{
+    position: absolute;
+    z-index: 100;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+  }
+}

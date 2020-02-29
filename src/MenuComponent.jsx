@@ -38,14 +38,14 @@ class MenuComponent extends React.Component {
           console.log("New Tree: ", newTree);
         }
 
-        this.setState({ menuTitle: title });
+        this.setState({ menuTitle: `Type: ${title.props.children.props.children}` });
         this.props.onTreeChange(treeArray);
         this.props.preloaderStatus(false);
       });
     };
 
     const onClick = ({ key, item }) => {
-      message.info(`Clicked on : ${item.props.children.props.children.props.children}`);
+      // message.info(`Clicked on : ${item.props.children.props.children.props.children}`);
       this.props.preloaderStatus(true);
       getTree(key, item.props.children);
     };
