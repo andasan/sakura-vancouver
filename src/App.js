@@ -46,7 +46,7 @@ const CopyrightComp = styled.div`
   position: absolute;
   bottom: 0px;
   left: 50%;
-  translate: transformX(-50%);
+  transform: tranlateX(-50%);
   background: rgba(255,255,255,0.6);
   color: #3f618c;
   font-weight: 400;
