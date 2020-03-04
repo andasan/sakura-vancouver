@@ -1,5 +1,5 @@
 import React from "react";
-import { Popover, Menu, Button, Dropdown, Icon, message } from "antd";
+import { Popover, Menu, Button, Dropdown, Icon } from "antd";
 import axios from "axios";
 import "./App.css";
 import "antd/dist/antd.css";
@@ -67,20 +67,6 @@ class MenuComponent extends React.Component {
             </Button>
           </Popover>
         </Menu.Item>
-        <Menu.Item key="Amanogawa">
-          <Popover placement="right" content={content("amanogawa")}>
-            <Button type="link" block>
-              Ama-no-gawa
-            </Button>
-          </Popover>
-        </Menu.Item>
-        <Menu.Item key="Mikuruma">
-          <Popover placement="right" content={content("mikuruma")}>
-            <Button type="link" block>
-              Mikuruma-gaeshi
-            </Button>
-          </Popover>
-        </Menu.Item>
         <Menu.Item key="Pink perfection">
           <Popover placement="right" content={content("pinkperfection")}>
             <Button type="link" block>
@@ -109,20 +95,6 @@ class MenuComponent extends React.Component {
             </Button>
           </Popover>
         </Menu.Item>
-        <Menu.Item key="Shogetsu">
-          <Popover placement="right" content={content("shogetsu")}>
-            <Button type="link" block>
-              Shogetsu
-            </Button>
-          </Popover>
-        </Menu.Item>
-        <Menu.Item key="Snow goose">
-          <Popover placement="right" content={content("snowgoose")}>
-            <Button type="link" block>
-              Snow Goose
-            </Button>
-          </Popover>
-        </Menu.Item>
         <Menu.Item key="Yoshino">
           <Popover placement="right" content={content("yoshino")}>
             <Button type="link" block>
@@ -148,13 +120,6 @@ class MenuComponent extends React.Component {
           <Popover placement="right" content={content("ukon")}>
             <Button type="link" block>
               Ukon
-            </Button>
-          </Popover>
-        </Menu.Item>
-        <Menu.Item key="Whitcomb">
-          <Popover placement="right" content={content("whitcomb")}>
-            <Button type="link" block>
-              Whitcomb
             </Button>
           </Popover>
         </Menu.Item>

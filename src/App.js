@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Media from 'react-media';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 import 'antd/dist/antd.css';
 import { svg } from './cherry';
 import MenuComponent from './MenuComponent';
+import MenuMobileComponent from './MenuMobileComponent';
 import LoadingScreen from './LoadingScreen';
 import './App.css';
 import styled from 'styled-components';
@@ -41,6 +43,11 @@ const CloseButton = styled.div`
   }
 `;
 
+const Container = styled.div`
+  height: 100vh;
+  overflow: hidden;
+`;
+
 const CopyrightComp = styled.div`
   z-index: 100;
   position: absolute;
@@ -52,6 +59,10 @@ const CopyrightComp = styled.div`
   font-weight: 400;
   font-size: 80%;
   padding: 5px;
+
+  @media (max-width: 768px) {
+    font-size: 50%;
+  }
 `;
 
 class App extends React.Component {
@@ -76,25 +87,47 @@ class App extends React.Component {
   };
 
   handleTreeChange = arr => {
-    this.setState({ 
+    this.setState({
       streetTrees: arr,
       tree: undefined
     })
   }
 
   handlePreloader = stats => {
-    this.setState({loading:stats});
+    this.setState({ loading: stats });
+  }
+
+  resizeMap() {
+    let { map } = this.state;
+    if (map) {
+      map.resize();
+      if (this.props.center) {
+        map.setCenter(this.props.center);
+      }
+    }
   }
 
   render() {
     const { center, zoom, streetTrees, tree } = this.state;
 
     return (
-      <>
-        
+      <Container>
+
         <header>SAKURA 2020</header>
-        <MenuComponent onTreeChange={this.handleTreeChange} preloaderStatus={this.handlePreloader} />
+        <Media queries={{
+          small: "(max-width: 1023px)",
+          large: "(min-width: 1024px)"
+        }}>
+          {matches => (
+            <Fragment>
+              {matches.small && <MenuMobileComponent onTreeChange={this.handleTreeChange} preloaderStatus={this.handlePreloader} />}
+              {matches.large && <MenuComponent onTreeChange={this.handleTreeChange} preloaderStatus={this.handlePreloader} />}
+            </Fragment>
+          )}
+        </Media>
+        
         {this.state.loading && <LoadingScreen />}
+        {this.resizeMap()}
         <Map
           style='mapbox://styles/andasan/ck71fj2bf0cpd1ikjd01exi05'
           center={center}
@@ -111,22 +144,22 @@ class App extends React.Component {
               <Feature
                 key={coords.tree_id}
                 coordinates={coords.geom.geometry.coordinates}
-                onClick={() => {this.markerClick(coords)}}
+                onClick={() => { this.markerClick(coords) }}
               />
             ))
             }
           </Layer>
           {tree && (
-            <Popup 
-              key={tree.tree_id} 
+            <Popup
+              key={tree.tree_id}
               coordinates={tree.geom.geometry.coordinates}
-              onClick={() => {this.setState({ tree: undefined })}}
+              onClick={() => { this.setState({ tree: undefined }) }}
             >
               <StyledPopup>
                 <CloseButton><i>close</i></CloseButton>
-                <div><br/>{tree.common_name}</div>
+                <div><br />{tree.common_name}</div>
                 <div>
-                  Street: {tree.std_street}<br/>
+                  Street: {tree.std_street}<br />
                   Species Name: {tree.species_name}
                 </div>
               </StyledPopup>
@@ -136,7 +169,7 @@ class App extends React.Component {
         <CopyrightComp>
           Created by &copy;Andasan | Images from: https://www.vcbf.ca/
         </CopyrightComp>
-      </>
+      </Container>
     );
   }
 }
