@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import Media from 'react-media';
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
+import { GeolocateControl } from "mapbox-gl";
 import 'antd/dist/antd.css';
 import { svg } from './cherry';
 import MenuComponent from './MenuComponent';
@@ -10,6 +11,7 @@ import './App.css';
 import styled from 'styled-components';
 
 const layoutLayer = { 'icon-image': 'cherryBlossom' };
+const onMapLoad = map => { map.addControl(new GeolocateControl()); };
 
 const image = new Image();
 image.src = 'data:image/svg+xml;charset=utf-8;base64,' + btoa(svg);
@@ -136,6 +138,7 @@ class App extends React.Component {
             height: '100vh',
             width: '100vw'
           }}
+          onStyleLoad={onMapLoad}
         >
           <Layer type="symbol" id="marker" layout={layoutLayer} images={images}>
             {streetTrees.filter(tree => {
