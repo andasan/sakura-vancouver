@@ -39,6 +39,7 @@ const CloseButton = styled.div`
   color: #3f618c;
   font-weight: 400;
   padding: 0 0 5px 5px;
+  z-index: 100;
 
   ${StyledPopup}:hover & {
     cursor: pointer;
