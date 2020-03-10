@@ -81,6 +81,7 @@ class App extends React.Component {
   }
 
   markerClick = (tree) => {
+    if(tree.cultivar_name === null) tree.cultivar_name = 'taihaku';
     this.setState({
       center: tree.geom.geometry.coordinates,
       zoom: [16],
@@ -160,6 +161,7 @@ class App extends React.Component {
             >
               <StyledPopup>
                 <CloseButton><i>close</i></CloseButton>
+                <img src={`/images/${tree.cultivar_name}.jpg`} alt={tree.cultivar_name} width="200px" />
                 <div><br />{tree.common_name}</div>
                 <div>
                   Street: {tree.std_street}<br />

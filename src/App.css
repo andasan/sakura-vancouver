@@ -27,6 +27,7 @@ header{
 .ant-menu{ transition: all 0.5s ease; opacity: 1}
 .ant-menu.hide{ display: none;}
 .ant-menu-submenu-popup { display: none; }
+.ant-menu-inline-collapsed-tooltip { display: none; }
 .ant-menu-inline-collapsed{ opacity: 0; }
 .ant-menu-sub.ant-menu-inline{background-color: pink; color: white;}
 

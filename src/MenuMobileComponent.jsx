@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Button } from "antd";
+import { Menu } from "antd";
 import axios from "axios";
 import "./App.css";
 
@@ -66,31 +66,39 @@ class MenuMobileComponent extends React.Component {
     const onClick = key => {
       this.toggleCollapsed();
       this.props.preloaderStatus(true);
-      getTree(key);
+      getTree(key.key);
     };
 
     return (
       <div className="navmobile">
-        {/* <Button
-          type="primary"
-          onClick={this.toggleCollapsed}
-          style={{ marginBottom: 16 }}
-        >
-          {this.state.collapsed ? "open" : "close"}
-        </Button> */}
         <div onClick={this.toggleCollapsed} id="nav-icon1" className={(this.state.openMenu ? "open" : "")}>
           <span></span>
           <span></span>
           <span></span>
         </div>
         <Menu
-            className={(this.state.openMenu ? "" : "hide")}
+          className={(this.state.openMenu ? "" : "hide")}
           mode="inline"
           theme="light"
           inlineCollapsed={this.state.collapsed}
-          openKeys={this.state.openKeys}
-          onOpenChange={this.onOpenChange}
+          // openKeys={this.state.openKeys}
+          // onOpenChange={this.onOpenChange}
+          onClick={onClick}
         >
+          <Menu.Item key="Accolade cherry">Accolade Cherry</Menu.Item>
+          <Menu.Item key="Akebono flowering cherry">Akebono Flowering Cherry</Menu.Item>
+          <Menu.Item key="Amanogawa">Amanogawa</Menu.Item>
+          <Menu.Item key="Pink Perfection">Pink Perfection</Menu.Item>
+          <Menu.Item key="rancho">Rancho Sargent Cherry</Menu.Item>
+          <Menu.Item key="shirofugen">Shiro-fugen</Menu.Item>
+          <Menu.Item key="Shirotae(Mt Fuji) Cherry">Shirotae (Mt. Fuji) Cherry</Menu.Item>
+          <Menu.Item key="Snow goose">Snow Goose</Menu.Item>
+          <Menu.Item key="yoshino">Somei Yoshino</Menu.Item>
+          <Menu.Item key="chokecherry">Spire</Menu.Item>
+          <Menu.Item key="Japanese Flowering Cherry">Tai-haku</Menu.Item>
+          <Menu.Item key="Ukon Japanese Cherry">Ukon</Menu.Item>
+
+{/* 
           <SubMenu key="sub1" title={<span>Accolade cherry</span>}>
             <img src={`/images/accolade.jpg`} alt="accolade" width="200px" />
             <button onClick={() => onClick("accolade")}> Show </button>
@@ -138,8 +146,8 @@ class MenuMobileComponent extends React.Component {
           <SubMenu key="sub10" title={<span>Ukon</span>}>
             <img src={`/images/ukon.jpg`} alt="ukon" width="200px" />
             <button onClick={() => onClick("ukon")}> Show </button>
-          </SubMenu>
-        </Menu>
+          </SubMenu>*/}
+        </Menu> 
         {/* <Menu onClick={onClick}>
           <Menu.Item key="Accolade cherry">
             <Popover placement="right" content={content("accolade")}>
