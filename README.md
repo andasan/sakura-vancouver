@@ -1,5 +1,5 @@
 # Sakura Vancouver
-A web application that locates different species of Cherry Blossoms across Metro Vancouver.
+A web application that locates different species of Cherry Blossoms across Metro Vancouver!
 
 ### Update
 Added geolocation for user
